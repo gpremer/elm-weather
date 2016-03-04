@@ -1,10 +1,14 @@
 module WeatherApp where
 
 import Html exposing (..)
+import WeatherSlot
 
 -- Model
 
-type alias Model = Int  
+type alias Model = WeatherSlot.Model
+
+init : Model
+init = WeatherSlot.init
 
 -- Update
 
@@ -18,5 +22,6 @@ update a m = m
 view : Signal.Address Action -> Model -> Html
 view address model =
   div [] 
-    [ text "The weather's fine!"
+    [ text "The weather somewhere is"
+    , WeatherSlot.view model
     ]
